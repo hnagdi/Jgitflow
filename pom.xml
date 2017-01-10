@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- ================================================ -->
+    <!-- Product Information -->
+    <!-- ================================================ -->
+    <groupId>jgitflow</groupId>
+    <artifactId>my-base-pom</artifactId>
+    <version>1.0.86</version>
+    <name>${project.artifactId}</name>
+    <packaging>pom</packaging>
+
+
+    <!-- ================================================ -->
+    <!-- Properties -->
+    <!-- ================================================ -->
+    <properties>
+        <!--jgitflow plugin default configuration -->
+        <release.branch.prefix>release-</release.branch.prefix>
+        <feature.branch.prefix>feature-</feature.branch.prefix>
+        <hotfix.branch.prefix>hotfix-</hotfix.branch.prefix>
+        <develop.branch>develop</develop.branch>
+        <master.branch>master</master.branch>
+        <version.tag.prefix>version-</version.tag.prefix>
+        <enable.ssh.agent>true</enable.ssh.agent>
+        <scm.comment.prefix>[maven-jgitflow-plugin] </scm.comment.prefix>
+        <push.releases>true</push.releases>
+        <push.hotfix>true</push.hotfix>
+        <always.update.origin>true</always.update.origin>
+        <auto.version.submodules>true</auto.version.submodules>
+        <no.deploy>true</no.deploy>
+        <pull.develop>true</pull.develop>
+    </properties>
+
+    <!-- ================================================ -->
+    <!-- Profiles -->
+    <!-- ================================================ -->
+
+    <!-- ================================================ -->
+    <!-- Build Settings -->
+    <!-- ================================================ -->
+    <build>
+        <!-- Build plugin management -->
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>external.atlassian.jgitflow</groupId>
+                    <artifactId>jgitflow-maven-plugin</artifactId>
+                    <version>${maven.jgitflow.plugin.version}</version>
+                    <configuration>
+                        <flowInitContext>
+                            <masterBranchName>${master.branch}</masterBranchName>
+                            <developBranchName>${develop.branch}</developBranchName>
+                            <releaseBranchPrefix>${release.branch.prefix}</releaseBranchPrefix>
+                            <hotfixBranchPrefix>${hotfix.branch.prefix}</hotfixBranchPrefix>
+                            <featureBranchPrefix>${feature.branch.prefix}</featureBranchPrefix>
+                            <versionTagPrefix>${version.tag.prefix}</versionTagPrefix>
+                        </flowInitContext>
+                        <enableSshAgent>${enable.ssh.agent}</enableSshAgent>
+                        <scmCommentPrefix>${scm.comment.prefix}</scmCommentPrefix>
+                        <pushReleases>${push.releases}</pushReleases>
+                        <pushHotfix>${push.hotfix}</pushHotfix>
+                        <alwaysUpdateOrigin>${push.releases}</alwaysUpdateOrigin>
+                        <autoVersionSubmodules>${auto.version.submodules}</autoVersionSubmodules>
+                        <noDeploy>${no.deploy}</noDeploy>
+                        <pullDevelop>${pull.develop}</pullDevelop>
+                    </configuration>
+                </plugin>
+            </plugins>
+            
+        </pluginManagement>
+    </build>
+</project>
