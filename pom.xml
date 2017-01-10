@@ -7,7 +7,7 @@
     <!-- ================================================ -->
     <groupId>jgitflow</groupId>
     <artifactId>my-base-pom</artifactId>
-    <version>1.1.0.89</version>
+    <version>1.2</version>
     <name>${project.artifactId}</name>
     <packaging>pom</packaging>
 
